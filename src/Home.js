@@ -1,4 +1,5 @@
-import react, {useState} from 'react';
+import react, {useState, useEffect} from 'react';
+import HandlingInputs from './HandlingInputs';
 
 export const MyComponent = () => {
 	const myName = 'Felix Adegboyega'
@@ -6,31 +7,38 @@ export const MyComponent = () => {
 	const school = "Soft Quest Incoporated"
 
 	// let comment = "";
+	const [welcome, setWelcome] = useState("");
 	const [comment, setComment] = useState("");
-	let score = 100;
+	let score = 30;
 
 	const getComment = () => {
 		if (score > 70) {
 			setComment("Excellent");
 		} else if (score > 60) {
 			setComment("Very Good");
-			// comment = "Very Good";
 		} else if (score > 55) {
-			// comment = "Good";
+			setComment("Good");
 		} else if (score > 50) {
-			// comment = "Fair";
+			setComment("Fair");
 		} else {
-			// comment = "Fail"
+			setComment("Fail");
 		}
 	}
 
+	useEffect(() => {
+		getComment()
+		setWelcome("You are welcome")
+	}, []);
+
 	return (
 		<div>
-			{comment}
+			{welcome} <br />
+			{comment} <br />
 			My name is {myName} from the department of {department} at {school} <br />
 			<input />
 			I'm the parent component
 			<SecondComponent />
+			<HandlingInputs />
 		</div>
 	)
 }
