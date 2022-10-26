@@ -5,11 +5,13 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {MyComponent} from './Home';
 import Main from './Main';
+import {MainRouter} from './router';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Main />
+    <MainRouter />
+    {/* <App /> */}
   </React.StrictMode>
 );
 

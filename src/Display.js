@@ -1,30 +1,31 @@
 import React, {useEffect, useState} from 'react'
 import loader from './ball.gif'
+import {useFetch} from './useFetch';
 import UsingRef from './UsingRef';
 const Display = ({users}) => {
 	const [images, setImages] = useState([]);
 	const [image, setImage] = useState(null);
 	const [isLoading, setIsLoading] = useState(false);
 	const [anImageIsLoading, setAnImageIsLoading] = useState(false);
-	const getAnImage = (id) => {
+	const {get} = useFetch();
+
+	const getAnImage = async (id) => {
 		setAnImageIsLoading(true);
-		fetch(`https://jsonplaceholder.typicode.com/photos/${id}`)
-			.then(res => res.json())
-			.then(data => {
-				setImage(data);
-				setAnImageIsLoading(false);
-				console.log(data);
-			})
+		const result = await get(`https://jsonplaceholder.typicode.com/photos/${id}`);
+		if (result) {
+			setImage(result);
+			setAnImageIsLoading(false);
+		}
 	}
-	const getImages = () => {
+	const getImages = async () => {
 		setIsLoading(true);
-		fetch("https://jsonplaceholder.typicode.com/photos/")
-			.then(res => res.json())
-			.then(data => {
-				setImages(data);
-				setIsLoading(false)
-				console.log(data);
-			})
+		const result = await get("https://jsonplaceholder.typicode.com/photos/");
+		if (result) {
+			setImages(result);
+			setIsLoading(false)
+			console.log(result);
+		}
+
 		// const jsonImg = fetchedImages.json();
 
 		// axios.get("https://jsonplaceholder.typicode.com/photos")
