@@ -6,7 +6,9 @@ export const ConnectToBackend = () => {
 	const handleSubmit = () => {
 		axios.post(
 			"http://localhost:3200/new-todo",
-			{todoName: nameRef.current.value})
+			{
+				todoName: nameRef.current.value
+			})
 			.then(result => {
 				console.log(result.data);
 			})

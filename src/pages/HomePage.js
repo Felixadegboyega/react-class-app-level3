@@ -1,5 +1,4 @@
 import React from 'react'
-import {ConnectToBackend} from './ConnectToBackend'
 
 export const HomePage = () => {
 	return (
