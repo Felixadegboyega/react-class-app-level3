@@ -15,18 +15,18 @@ export const MainRouter = () => {
 			<div className='flex '>
 				{/* <Nav /> */}
 				<Routes>
-					<Route path='/' element={<Navigate to="/home" />} />
-					<Route path='/home' element={<HomePage />} />
-					<Route path='/about/' element={<About />} />
-					<Route path='/profile/:username' element={<Profile />} />
-					<Route path='/user' element={<UserGuard />} children={
+					<Route key="index" path='/' element={<Navigate to="/home" />} />
+					<Route key="home" path='/home' element={<HomePage />} />
+					<Route key="about" path='/about/' element={<About />} />
+					<Route key="profile" path='/profile/:username' element={<Profile />} />
+					<Route key="user" path='/user' element={<UserGuard />} children={
 						[
-							<Route path="dashboard" element={<UserDashboard />} />,
-							<Route path="transfer" element={<Transfer />} />
+							<Route key="dashboard" path="dashboard" element={<UserDashboard />} />,
+							<Route key="transfer" path="transfer" element={<Transfer />} />
 						]
 					} />
-					<Route path="login" element={<Login />} />
-					<Route path='*' element={<NotFound />} />
+					<Route key="login" path="login" element={<Login />} />
+					<Route key="all" path='*' element={<NotFound />} />
 				</Routes>
 			</div>
 		</BrowserRouter>

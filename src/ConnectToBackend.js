@@ -11,6 +11,8 @@ export const ConnectToBackend = () => {
 			})
 			.then(result => {
 				console.log(result.data);
+			}).catch(err => {
+
 			})
 		// fetch("http://localhost:3200/new-todo", {
 		// 	method: "POST",
