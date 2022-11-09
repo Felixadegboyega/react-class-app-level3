@@ -7,13 +7,17 @@ import {MyComponent} from './Home';
 import Main from './Main';
 import {MainRouter} from './router';
 import {ConnectToBackend} from './ConnectToBackend';
+import {Provider} from 'react-redux';
+import {store} from './app/store';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <MainRouter />
-    {/* <ConnectToBackend /> */}
-    {/* <App /> */}
+    <Provider store={store}>
+      <MainRouter />
+      {/* <ConnectToBackend /> */}
+      {/* <App /> */}
+    </Provider>
   </React.StrictMode>
 );
 

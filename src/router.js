@@ -8,6 +8,7 @@ import Transfer from './pages/Transfer'
 import UserDashboard from './pages/UserDashboard'
 import {Login} from './pages/Login'
 import {UserGuard} from './guards/UserGuard'
+import {Counter} from './pages/Counter'
 
 export const MainRouter = () => {
 	return (
@@ -21,6 +22,7 @@ export const MainRouter = () => {
 					<Route key="profile" path='/profile/:username' element={<Profile />} />
 					<Route key="user" path='/user' element={<UserGuard />} children={
 						[
+							<Route key="counter" path="counter" element={<Counter />} />,
 							<Route key="dashboard" path="dashboard" element={<UserDashboard />} />,
 							<Route key="transfer" path="transfer" element={<Transfer />} />
 						]
