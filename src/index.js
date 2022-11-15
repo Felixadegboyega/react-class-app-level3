@@ -14,8 +14,8 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <MainRouter />
-      {/* <ConnectToBackend /> */}
+      {/* <MainRouter /> */}
+      <ConnectToBackend />
       {/* <App /> */}
     </Provider>
   </React.StrictMode>

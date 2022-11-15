@@ -9,17 +9,19 @@ import UserDashboard from './pages/UserDashboard'
 import {Login} from './pages/Login'
 import {UserGuard} from './guards/UserGuard'
 import {Counter} from './pages/Counter'
+import {Timer} from './pages/Timer'
 
 export const MainRouter = () => {
 	return (
 		<BrowserRouter>
-			<div className='flex '>
+			<div className=' '>
 				{/* <Nav /> */}
 				<Routes>
 					<Route key="index" path='/' element={<Navigate to="/home" />} />
 					<Route key="home" path='/home' element={<HomePage />} />
 					<Route key="about" path='/about/' element={<About />} />
 					<Route key="profile" path='/profile/:username' element={<Profile />} />
+					<Route key="timer" path='/timer' element={<Timer />} />
 					<Route key="user" path='/user' element={<UserGuard />} children={
 						[
 							<Route key="counter" path="counter" element={<Counter />} />,
