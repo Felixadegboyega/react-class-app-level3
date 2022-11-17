@@ -1,23 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
-import {MyComponent} from './Home';
-import Main from './Main';
-import {MainRouter} from './router';
-import {ConnectToBackend} from './ConnectToBackend';
 import {Provider} from 'react-redux';
+import {ConnectToBackend} from './ConnectToBackend'
 import {store} from './app/store';
-import ClassBased from './ClassComponent';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <MainRouter />
+      {/* <MainRouter /> */}
       {/* <ClassBased /> */}
-      {/* <ConnectToBackend /> */}
+      <ConnectToBackend />
       {/* <App /> */}
     </Provider>
   </React.StrictMode>

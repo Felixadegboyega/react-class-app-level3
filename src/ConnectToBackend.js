@@ -1,26 +1,35 @@
 import axios from 'axios';
-import React, {useEffect, useRef, useState} from 'react'
-import {baseUrl} from './constants';
+import React, {useEffect, useState} from 'react'
+import {baseUrl, socket} from './constants';
 
 export const ConnectToBackend = () => {
-	const nameRef = useRef();
+
+	useEffect(() => {
+		socket.on("user-sent", (res) => {
+			console.log(res);
+		})
+	}, [])
 	
+	const sendUser = () =>{
+		socket.emit("send-user", {firstname: "Felix"});
+	}
+
 	const [profile, setProfile] = useState(null);
 	const [isloggedIn, setIsloggedIn] = useState(false);
 
-	useEffect(() => {
-		axios.get(`${baseUrl}get-profile`, {
-			headers: {
-			"Authorization" : localStorage.token
-			}
-		}).then(res => {
-			if (res.data.data) {
-				setProfile(res.data.data);
-			}
-			// console.log(res);
-			// setProfile()
-		})
-	}, [isloggedIn])
+	// useEffect(() => {
+	// 	axios.get(`${baseUrl}get-profile`, {
+	// 		headers: {
+	// 		"Authorization" : localStorage.token
+	// 		}
+	// 	}).then(res => {
+	// 		if (res.data.data) {
+	// 			setProfile(res.data.data);
+	// 		}
+	// 		// console.log(res);
+	// 		// setProfile()
+	// 	})
+	// }, [isloggedIn])
 	
 	const [loginDetails, setLoginDetails] = useState({
 		email: "",
@@ -68,7 +77,7 @@ export const ConnectToBackend = () => {
 	}
 	return (
 		<div>
-
+			<button onClick={sendUser} className='text-2xl p-5 rounded-full text-white bg-orange-500'>Send User</button>
 			<div>
 				SignUp
 				<input className='block m-3 border rounded p-2 outline-none' placeholder='firstname' name='firstname' value={user.firstname} onChange={handleChange} />
@@ -96,8 +105,8 @@ export const ConnectToBackend = () => {
 	)
 }
 
-{/* <input ref={nameRef} className="border border-blue-300 outline-none" />
-<button onClick={handleSubmit}>Submit</button> */}
+//  <input ref={nameRef} className="border border-blue-300 outline-none" />
+// <button onClick={handleSubmit}>Submit</button> 
 
 			// const handleSubmit = () => {
 			// 	axios.post(`${baseUrl}new-todo`, {todoName: nameRef.current.value}, {
