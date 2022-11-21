@@ -10,13 +10,16 @@ import {Login} from './pages/Login'
 import {UserGuard} from './guards/UserGuard'
 import {Counter} from './pages/Counter'
 import {Timer} from './pages/Timer'
+import AddData from './AddData'
+import {ApiRevisionClass} from './api'
 
 export const MainRouter = () => {
 	return (
 		<BrowserRouter>
 			<div className=' '>
-				{/* <Nav /> */}
+				{/* <AddData /> */}
 				<Routes>
+
 					<Route key="index" path='/' element={<Navigate to="/home" />} />
 					<Route key="home" path='/home' element={<HomePage />} />
 					<Route key="about" path='/about/' element={<About />} />
@@ -26,7 +29,8 @@ export const MainRouter = () => {
 						[
 							<Route key="counter" path="counter" element={<Counter />} />,
 							<Route key="dashboard" path="dashboard" element={<UserDashboard />} />,
-							<Route key="transfer" path="transfer" element={<Transfer />} />
+							<Route key="transfer" path="transfer" element={<Transfer />} />,
+							<Route key="api" path="api" element={<ApiRevisionClass />} />,
 						]
 					} />
 					<Route key="login" path="login" element={<Login />} />

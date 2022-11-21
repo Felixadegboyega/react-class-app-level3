@@ -3,16 +3,16 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import {Provider} from 'react-redux';
-import {ConnectToBackend} from './ConnectToBackend'
 import {store} from './app/store';
+import {MainRouter} from './router'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      {/* <MainRouter /> */}
+      <MainRouter />
       {/* <ClassBased /> */}
-      <ConnectToBackend />
+      {/* <ConnectToBackend /> */}
       {/* <App /> */}
     </Provider>
   </React.StrictMode>
